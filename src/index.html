@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Dr. Know</title>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+</head>
+<body>
+<h1>Hello World!</h1>
+</body>
+<script>
+    // see: https://github.com/electron/electron/issues/254
+    window.$ = window.jQuery = require('../node_modules/jquery/dist/jquery.min.js');
+</script>
+<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../node_modules/vue/dist/vue.min.js"></script>
+<script>
+    (function () {
+        const script = document.createElement('script');
+        script.src = process.env.NODE_ENV === 'development'
+                ? 'http://localhost:' + process.env.SERVER_PORT + '/dist/index.js'
+                : '../dist/bundle.js';
+        document.write(script.outerHTML);
+    }());
+</script>
+</html>
