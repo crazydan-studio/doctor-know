@@ -24,5 +24,12 @@ module.exports = {
     // or a function that will return a replacement.
     // For inner libraries and modules
     replacements: {
+        '^core/': './src/core/',
+        '^lib/': './src/lib/',
+        '^assets/': './src/assets/',
+        '^ui/([^\\./]+)$': './src/ui/$1.vue',
+        '^ui/knowledge/([^\\./]+)$': './src/ui/knowledge/$1.vue',
+        '^ui/todo/([^\\./]+)$': './src/ui/todo/$1.vue',
+        '^ui/': './src/ui/'
     }
 };
