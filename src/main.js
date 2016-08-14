@@ -10,9 +10,9 @@ function createWindow() {
     // Create the browser window.
     win = new BrowserWindow({
         title: 'Dr. Know',
+        frame: false,
         icon: `${__dirname}/assets/images/icon-64.png`
-        // frame: false,
-        // titleBarStyle: 'hidden'
+        // titleBarStyle: 'hidden',
     });
 
     // and load the index.html of the app.
@@ -55,7 +55,7 @@ app.on('activate', () => {
 // http://electron.atom.io/docs/api/tray/
 let tray = null;
 app.on('ready', () => {
-    tray = new Tray(`${__dirname}/assets/images/icon-32.png`);
+    tray = new Tray(`${__dirname}/assets/images/icon-64.png`);
     tray.setToolTip('Dr. Know');
 
     const contextMenu = Menu.buildFromTemplate([

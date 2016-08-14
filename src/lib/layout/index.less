@@ -1,0 +1,68 @@
+// http://lesscss.org/features
+@prefix: layout-;
+
+.absolute-position() {
+    position: absolute !important;
+}
+
+.relative-position() {
+    position: relative !important;
+}
+
+.match-parent-width() {
+    left: 0;
+    right: 0;
+}
+
+.match-parent-height() {
+    top: 0;
+    bottom: 0;
+}
+
+.match-parent() {
+    .match-parent-width;
+    .match-parent-height;
+}
+
+.absolute-border-box {
+    .absolute-position;
+    box-sizing: border-box;
+}
+
+.@{prefix}match-parent:extend(.absolute-border-box) {
+    .match-parent;
+}
+
+.@{prefix}match-parent-width:extend(.absolute-border-box) {
+    .match-parent-width;
+}
+
+.@{prefix}match-parent-height:extend(.absolute-border-box) {
+    .match-parent-height;
+}
+
+// Border layout.
+.@{prefix}border:extend(.absolute-border-box) {
+    overflow: hidden !important;
+
+    & > &-north:extend(.absolute-border-box) {
+        top: 0;
+        .match-parent-width;
+    }
+
+    & > &-south:extend(.absolute-border-box) {
+        bottom: 0;
+        .match-parent-width;
+    }
+
+    & > &-west:extend(.absolute-border-box) {
+        left: 0;
+    }
+
+    & > &-east:extend(.absolute-border-box) {
+        right: 0;
+    }
+
+    & > &-center:extend(.absolute-border-box) {
+    }
+}
