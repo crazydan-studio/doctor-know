@@ -1,8 +1,13 @@
+// https://github.com/shelljs/shelljs
+var shell = require('shelljs');
+var path = require('path');
+
 /**
  * module alias definitions
  *
  * [Document](https://github.com/benbria/aliasify#configuration)
  */
+var root = path.resolve(__dirname, '..');
 module.exports = {
     // If true, then aliasify will print modifications it is making to stdout.
     verbose: false,
@@ -18,18 +23,23 @@ module.exports = {
     },
     // An object mapping aliases to their replacements.
     // For 3rd-party libraries
-    aliases: {
-    },
+    aliases: {},
     // An object mapping RegExp strings with RegExp replacements,
     // or a function that will return a replacement.
     // For inner libraries and modules
     replacements: {
-        '^core/': './src/core/',
-        '^lib/': './src/lib/',
-        '^assets/': './src/assets/',
-        '^ui/([^\\./]+)$': './src/ui/$1.vue',
-        '^ui/knowledge/([^\\./]+)$': './src/ui/knowledge/$1.vue',
-        '^ui/todo/([^\\./]+)$': './src/ui/todo/$1.vue',
-        '^ui/': './src/ui/'
+        // View alias
+        'doctor-know/(.+)/(([A-Z][a-z\d]*)+)$': function (alias, regexMatch, regexObject) {
+            var view = alias.replace(regexObject, '$1/$2');
+            var viewPath = path.resolve(root, 'src', view);
+
+            if (shell.test('-f', viewPath + '.vue') && shell.test('-f', viewPath + '.js')) {
+                return viewPath + '.vue';
+            } else {
+                return null; // null to make sure other plugins can process
+            }
+        },
+        // Semantic UI
+        'semantic-ui': path.resolve(root, 'lib/semantic-ui/dist/semantic.js')
     }
 };

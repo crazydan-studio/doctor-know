@@ -1,3 +1,8 @@
 # http://eslint.org/docs/user-guide/configuring#ignoring-files-and-directories
-test/unit/lib/*.js
+# http://eslint.org/docs/rules
 **/*.md
+/lib/*
+/node_modules/*
+/dist/*
+/.idea/*
+/.git/*

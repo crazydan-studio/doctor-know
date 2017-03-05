@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-import Knowledge from 'ui/knowledge/Knowledge';
+import Knowledge from './knowledge/Knowledge';
 
 var DoctorKnow = Vue.extend({
     name: 'doctor-know',

@@ -2,26 +2,46 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Dr. Know</title>
-    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Dr. Know - A personal knowledge and TODO management application</title>
+    <link rel="stylesheet" href="../lib/semantic-ui/dist/semantic.min.css"/>
+    <link rel="stylesheet" href="assets/css/index.less"/>
 </head>
 <body>
-    <div class="doctor-know-app layout-match-parent">
-        <doctor-know></doctor-know>
+    <div class="ui container">
+        <h1 class="ui text container">
+            <img class="ui centered image logo" src="../docs/images/logo.png">
+        </h1>
+        <div class="ui text container">
+            <div class="ui stacked segment">
+                <div class="ui fluid right action input">
+                    <input type="text" placeholder="Input something ..."
+                           autofocus autocomplete="off">
+                    <button class="ui teal icon button">
+                        <i class="plus icon"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="ui text container">
+            <div class="ui centered container intro">
+                <span class="text">Powered by <a href="https://crazydan.org">Crazydan Studio</a>.</span>
+            </div>
+        </div>
     </div>
 </body>
 <script>
     // see: https://github.com/electron/electron/issues/254
     window.$ = window.jQuery = require('../node_modules/jquery/dist/jquery.min.js');
 </script>
-<script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../lib/semantic-ui/dist/semantic.js"></script>
 <script src="../node_modules/vue/dist/vue.min.js"></script>
 <script>
     (function () {
         const script = document.createElement('script');
         if (process.env.NODE_ENV === 'development') {
-            let server = require('../server.json');
-            script.src = `http://${server.address}:${server.port}/dist/index.js`;
+            let server = require('../build/config/server.json');
+            script.src = `${server.url}/index.js`;
         } else {
             script.src = '../dist/bundle.js';
         }

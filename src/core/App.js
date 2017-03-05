@@ -1,9 +1,9 @@
 import Vue from 'vue';
 
-import DoctorKnow from 'ui/DoctorKnow';
+import DoctorKnow from '../ui/DoctorKnow';
 
-require('lib/layout/index.less');
-require('ui/theme/default/index.less');
+require('../lib/layout/index.less');
+require('../ui/theme/default/index.less');
 
 /**
  * Constructor
